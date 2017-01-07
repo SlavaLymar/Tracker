@@ -1,0 +1,8 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ru.yalymar</groupId>
+    <artifactId>tracker</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <name>junior</name>
+</project>

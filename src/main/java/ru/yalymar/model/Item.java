@@ -3,13 +3,30 @@ package ru.yalymar.model;
 
 public class Item {
 
-    public String name;
-    public String description;
-    public long time;
-    public String[] comment;
+    protected String name;
+    protected String description;
+    protected long time;
+    protected String[] comment;
+    protected String id;
 
-    public void setComment(String[] comment) {
-        this.comment = comment;
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public String[] getComment() {
+        return comment;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void setName(String name) {
@@ -24,21 +41,11 @@ public class Item {
         this.time = time;
     }
 
-    public String[] getComment() {
-        return comment;
+    public void setComment(String[] comment) {
+        this.comment = comment;
     }
 
-    public String getName() {
-        return name;
+    public void setId(String id) {
+        this.id = id;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public long getTime() {
-        return time;
-    }
-
-
 }

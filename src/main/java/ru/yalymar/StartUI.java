@@ -6,7 +6,11 @@ import ru.yalymar.model.Item;
 import ru.yalymar.tracker.Tracker;
 
 public class StartUI {
-    public static void main(String[] args) {
+
+
+
+
+    /*public static void main(String[] args) {
         Tracker tracker = new Tracker();
         ConsoleInput consoleInput = new ConsoleInput();
         Menu menu = new Menu();
@@ -46,5 +50,5 @@ public class StartUI {
                 default:
             }
         }
-    }
+    }*/
 }

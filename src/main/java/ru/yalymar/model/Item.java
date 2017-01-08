@@ -6,15 +6,9 @@ public class Item {
     public String name;
     public String description;
     public long time;
-    public String comment;
+    public String[] comment;
 
-    public Item(String name, String description, long time) {
-        this.name = name;
-        this.description = description;
-        this.time = time;
-    }
-
-    public void setComment(String comment) {
+    public void setComment(String[] comment) {
         this.comment = comment;
     }
 
@@ -30,7 +24,7 @@ public class Item {
         this.time = time;
     }
 
-    public String getComment() {
+    public String[] getComment() {
         return comment;
     }
 
@@ -46,22 +40,5 @@ public class Item {
         return time;
     }
 
-    public void add(String name, String description){
-    }
-
-    public void edit(String name, String description){
-    }
-
-    public void delete(Item item){
-    }
-
-    public void showAll(Item[] item){
-    }
-
-    public void showWithFilters(Item[] item, String name, long time){
-    }
-
-    public void addComment(Item item, String comment){
-    }
 
 }

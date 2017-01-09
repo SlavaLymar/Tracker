@@ -1,51 +1,42 @@
 package ru.yalymar.model;
 
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class Item {
 
-    protected String name;
-    protected String description;
-    protected long time;
-    protected String[] comment;
-    protected String id;
+    private String name;
+    private String description;
+    private Date time;
+    private String id;
+    private List <Comment> comments = new ArrayList<Comment>();
+
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.time = new Date();
+    }
 
     public String getName() {
         return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public long getTime() {
-        return time;
-    }
-
-    public String[] getComment() {
-        return comment;
     }
 
     public String getId() {
         return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
-    }
-
-    public void setComment(String[] comment) {
-        this.comment = comment;
-    }
-
     public void setId(String id) {
         this.id = id;
     }
+
+    public void addCommentInList(Comment comment){
+        this.comments.add(comment);
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
 }

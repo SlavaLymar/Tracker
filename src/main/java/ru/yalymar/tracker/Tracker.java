@@ -1,73 +1,63 @@
 package ru.yalymar.tracker;
-import ru.yalymar.model.Item;
 
+import ru.yalymar.model.Comment;
+import ru.yalymar.model.Item;
 import java.util.*;
 
 public class Tracker {
 
-    private Item[] items = new Item[10];
-
-    public Item[] getItems() {
-        return items;
-    }
-
+    private List <Item> items = new ArrayList<Item>();
     private int position = 0;
     private static final Random RANDOM = new Random();
 
     public Item add(Item item){
         item.setId(this.generateId());
-        this.items[position++] = item;
+        this.items.add(item);
         return item;
     }
 
     public void update(Item item){
-        for(int i = 0; i!=this.items.length;i++){
-            if(this.items[i]!=null && this.items[i].getId().equals(item.getId())){
-                this.items[i] = item;
+        for(int i = 0; i!=this.items.size();i++){
+            if(this.items.get(i)!=null && this.items.get(i).getName().equals(item.getName())){
+                this.items.set(i, item);
                 break;
             }
         }
     }
 
     public void delete(Item item){
-        for(int i = 0; i!=this.items.length;i++){
-            if(this.items[i]!=null && this.items[i].getId().equals(item.getId())){
-                this.items[i] = null;
+        for(int i = 0; i!=this.items.size();i++){
+            if(this.items.get(i)!=null && this.items.get(i).getName().equals(item.getName())){
+                this.items.set(i, null);
                 break;
             }
         }
     }
 
-    public Item[] findAll(){
-        Item[] result = new Item[this.position];
-        for(int i = 0; i!=this.position;i++){
-            result[i] = this.items[i];
-        }
-        return result;
-    }
-
-    public Item[] findByName(String key){
-        Item[] tmp = new Item[this.position];
-        int count = 0;
-        for(int i = 0; i!= this.position;i++){
-            if(this.items[i]!=null && this.items[i].getName().equals(key)){
-                tmp[i] = this.items[i];
-                count++;
-            }
-        }
-        Item[] result = new Item[count];
-        int j = 0;
-        for(int i = 0; i<tmp.length; i++){
-            if(tmp[i]!= null){
-                result[j] = tmp[i];
-                j++;
+    public List <Item> findAll(){
+        List <Item> result = new ArrayList<Item>();
+        for(Item i: this.items) {
+            if (i!=null) {
+                result.add(i);
             }
         }
         return result;
     }
 
-    public void addComment(Item item, String comment){
+    public List <Item> findByName(String key){
+        List <Item> result = new ArrayList<Item>();
+        for(Item i: this.items){
+            if(i!= null && i.getName().equals(key)){
+                result.add(i);
+            }
+        }
+        return result;
+    }
 
+    public Item addComment(String id, Comment comment){
+        Item item = this.findById(id);
+        item.addCommentInList(comment);
+        return item;
     }
 
     public String generateId(){
@@ -83,6 +73,10 @@ public class Tracker {
             }
         }
         return result;
+    }
+
+    public List <Item> getItems() {
+        return items;
     }
 
 

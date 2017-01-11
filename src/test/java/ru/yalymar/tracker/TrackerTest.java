@@ -24,7 +24,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("Task1", "Description of task1");
         tracker.add(item);
-        Item expected = new Item("Task1", "Description of task2");
+        Item expected = new Item("Task21", "Description of task2", item.getId());
         tracker.update(expected);
         Item result = tracker.getItems().get(0);
         assertThat(result, is(expected));
@@ -35,10 +35,9 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("Task1", "Description of task1");
         tracker.add(item);
-        Item expected = null;
         tracker.delete(item);
-        Item result = tracker.getItems().get(0);
-        assertThat(result,is(expected));
+        List <Item> expected = new ArrayList<Item>();
+        assertThat(tracker.getItems(),is(expected));
     }
 
     @Test
@@ -83,5 +82,6 @@ public class TrackerTest {
         String expected = "Это комментарий";
         assertThat(item1.getComments().get(0).getComment(), is(expected));
     }
+
 
 }

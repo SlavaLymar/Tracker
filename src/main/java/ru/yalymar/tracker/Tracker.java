@@ -7,8 +7,8 @@ import java.util.*;
 public class Tracker {
 
     private List <Item> items = new ArrayList<Item>();
-    private int position = 0;
     private static final Random RANDOM = new Random();
+    private int position = 0;
 
     public Item add(Item item){
         item.setId(this.generateId());
@@ -17,21 +17,13 @@ public class Tracker {
     }
 
     public void update(Item item){
-        for(int i = 0; i!=this.items.size();i++){
-            if(this.items.get(i)!=null && this.items.get(i).getName().equals(item.getName())){
-                this.items.set(i, item);
-                break;
-            }
-        }
+        if(this.items.indexOf(item) != -1)
+            Collections.replaceAll(this.items, this.items.get(this.items.indexOf(item)), item);
     }
 
     public void delete(Item item){
-        for(int i = 0; i!=this.items.size();i++){
-            if(this.items.get(i)!=null && this.items.get(i).getName().equals(item.getName())){
-                this.items.set(i, null);
-                break;
-            }
-        }
+            if(this.items.indexOf(item) != -1)
+                this.items.remove(this.items.indexOf(item));
     }
 
     public List <Item> findAll(){
@@ -61,6 +53,7 @@ public class Tracker {
     }
 
     public String generateId(){
+
         return String.valueOf(System.currentTimeMillis()+RANDOM.nextInt());
     }
 
@@ -78,11 +71,5 @@ public class Tracker {
     public List <Item> getItems() {
         return items;
     }
-
-
-
-
-
-
 
 }

@@ -8,6 +8,11 @@ import ru.yalymar.start.Input;
 import ru.yalymar.tracker.Tracker;
 import java.util.List;
 
+/**
+ * @author slavalymar
+ * @since 13.01.2017
+ * @version 1
+ */
 public class Menu {
 
     private Input input;
@@ -22,6 +27,9 @@ public class Menu {
         this.tracker = tracker;
     }
 
+    /**
+     * greetings
+     */
     public void greetings(){
         System.out.println("Hello. This is a tracker!");
     }
@@ -34,6 +42,9 @@ public class Menu {
         return b;
     }
 
+    /**
+     * create menu
+     */
     public void fillMenu(){
         this.userActions[position++] = new AddItem("Add the Item;");
         this.userActions[position++] = new EditItem("Edit the Item;");
@@ -44,10 +55,16 @@ public class Menu {
         this.userActions[position++] = new Exit("Exit");
     }
 
+    /**
+     * @param key
+     */
     public void select(int key){
         this.userActions[key].execute(this.input, this.tracker);
     }
 
+    /**
+     * @return int[]
+     */
     public int[] getIntArr(){
         int[] arr = new int[this.arrLength];
         for(int i = 0; i<arr.length;i++){
@@ -56,6 +73,9 @@ public class Menu {
         return arr;
     }
 
+    /**
+     * show menu
+     */
     public void showMenu(){
         for(UserAction userAction: userActions){
             if(userAction!=null) {
@@ -64,18 +84,30 @@ public class Menu {
         }
     }
 
+    /**
+     * @author slavalymar
+     * @since 13.01.2017
+     * @version 1
+     */
     private class AddItem extends BaseAction {
 
         public AddItem(String name) {
             super(name);
         }
 
+        /**
+         * @return k
+         */
         @Override
         public int key() {
             final int k = 0;
             return k;
         }
 
+        /**
+         * @param input
+         * @param tracker
+         */
         @Override
         public void execute(Input input, Tracker tracker) {
 
@@ -94,18 +126,30 @@ public class Menu {
         }
     }
 
+    /**
+     * @author slavalymar
+     * @since 13.01.2017
+     * @version 1
+     */
     private class EditItem extends BaseAction {
 
         public EditItem(String name) {
             super(name);
         }
 
+        /**
+         * @return k
+         */
         @Override
         public int key() {
             final int k = 1;
             return k;
         }
 
+        /**
+         * @param input
+         * @param tracker
+         */
         @Override
         public void execute(Input input, Tracker tracker) {
             tracker.showAllItems();
@@ -129,18 +173,30 @@ public class Menu {
         }
     }
 
+    /**
+     * @author slavalymar
+     * @since 13.01.2017
+     * @version 1
+     */
     private class DeteleItem extends BaseAction {
 
         public DeteleItem(String name) {
             super(name);
         }
 
+        /**
+         * @return k
+         */
         @Override
         public int key() {
             final int k = 2;
             return 2;
         }
 
+        /**
+         * @param input
+         * @param tracker
+         */
         @Override
         public void execute(Input input, Tracker tracker) {
             tracker.showAllItems();
@@ -162,36 +218,60 @@ public class Menu {
         }
     }
 
+    /**
+     * @author slavalymar
+     * @since 13.01.2017
+     * @version 1
+     */
     private class ShowAllItem extends BaseAction {
 
         public ShowAllItem(String name) {
             super(name);
         }
 
+        /**
+         * @return k
+         */
         @Override
         public int key() {
             final int k = 3;
             return k;
         }
 
+        /**
+         * @param input
+         * @param tracker
+         */
         @Override
         public void execute(Input input, Tracker tracker) {
             tracker.showAllItems();
         }
     }
 
+    /**
+     * @author slavalymar
+     * @since 13.01.2017
+     * @version 1
+     */
     private class ShowItemsByFilter extends BaseAction {
 
         public ShowItemsByFilter(String name) {
             super(name);
         }
 
+        /**
+         * @return k
+         */
         @Override
         public int key() {
             final int k = 4;
             return k;
         }
 
+        /**
+         * @param input
+         * @param tracker
+         */
         @Override
         public void execute(Input input, Tracker tracker) {
             tracker.showAllItems();
@@ -221,18 +301,30 @@ public class Menu {
         }
     }
 
+    /**
+     * @author slavalymar
+     * @since 13.01.2017
+     * @version 1
+     */
     private class CommentClass extends BaseAction {
 
         public CommentClass(String name) {
             super(name);
         }
 
+        /**
+         * @return k
+         */
         @Override
         public int key() {
             final int k = 5;
             return k;
         }
 
+        /**
+         * @param input
+         * @param tracker
+         */
         @Override
         public void execute(Input input, Tracker tracker) {
             tracker.showAllItems();
@@ -258,18 +350,30 @@ public class Menu {
         }
     }
 
+    /**
+     * @author slavalymar
+     * @since 13.01.2017
+     * @version 1
+     */
     private class Exit extends BaseAction{
 
         public Exit(String name) {
             super(name);
         }
 
+        /**
+         * @return k
+         */
         @Override
         public int key() {
             int k = 6;
             return k;
         }
 
+        /**
+         * @param input
+         * @param tracker
+         */
         @Override
         public void execute(Input input, Tracker tracker) {
             setB(false);

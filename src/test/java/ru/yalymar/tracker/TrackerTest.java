@@ -10,6 +10,11 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+/**
+ * @author slavalymar
+ * @since 13.01.2017
+ * @version 1
+ */
 public class TrackerTest {
     @Test
     public void addTest() {

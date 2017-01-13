@@ -3,6 +3,11 @@ package ru.yalymar.start;
 import ru.yalymar.menu.Menu;
 import ru.yalymar.tracker.Tracker;
 
+/**
+ * @author slavalymar
+ * @since 13.01.2017
+ * @version 1
+ */
 public class StartUI {
 
     private Input input;
@@ -11,6 +16,9 @@ public class StartUI {
         this.input = input;
     }
 
+    /**
+     * start programm
+     */
    public void init(){
        Tracker tracker = new Tracker();
        Menu menu = new Menu(this.input, tracker);
@@ -24,6 +32,9 @@ public class StartUI {
         while(menu.isB());
     }
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
 
        new StartUI(new ConsoleInput()).init();

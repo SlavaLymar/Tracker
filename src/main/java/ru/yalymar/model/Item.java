@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author slavalymar
+ * @since 13.01.2017
+ * @version 1
+ */
 public class Item {
 
     private String name;
@@ -48,12 +53,19 @@ public class Item {
         this.id = id;
     }
 
+    /**
+     * @param o
+     * @return boolean
+     */
     @Override
     public boolean equals(Object o){
         Item i = (Item) o;
         return (this.getId() == i.getId());
     }
 
+    /**
+     * @return int
+     */
      @Override
     public int hashCode() {
         final int prime = 31;

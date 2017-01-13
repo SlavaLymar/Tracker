@@ -8,6 +8,11 @@ import ru.yalymar.tracker.Tracker;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
+/**
+ * @author slavalymar
+ * @since 13.01.2017
+ * @version 1
+ */
 public class MenuTest {
     @Test
     public void getIntArrTest() {

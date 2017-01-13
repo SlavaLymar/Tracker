@@ -1,5 +1,10 @@
 package ru.yalymar.model;
 
+/**
+ * @author slavalymar
+ * @since 13.01.2017
+ * @version 1
+ */
 public class Comment {
 
     private String comment;

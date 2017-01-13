@@ -11,17 +11,21 @@ public class StartUI {
         this.input = input;
     }
 
-   /* public void init(){
-        ConsoleInput input = new ConsoleInput();
-        Tracker tracker = new Tracker();
-        Menu menu = new Menu();
-        menu.greetings();
+   public void init(){
+       Tracker tracker = new Tracker();
+       Menu menu = new Menu(this.input, tracker);
+       menu.fillMenu();
 
-
-
+       do{
+           menu.greetings();
+           menu.showMenu();
+           menu.select(this.input.ask("Select a number of menu: ", menu.getIntArr()));
+       }
+        while(menu.isB());
     }
 
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput()).init();
-    }*/
+
+       new StartUI(new ConsoleInput()).init();
+    }
 }

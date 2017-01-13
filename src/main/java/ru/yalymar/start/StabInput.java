@@ -14,7 +14,13 @@ public class StabInput implements Input {
         return this.answers[position++];
     }
 
+    @Override
+    public int ask(String question, int[] arr) {
+        return 0;
+    }
+
     public int getNumber(String question) {
         return this.numbers[positionNumber++];
     }
+
 }

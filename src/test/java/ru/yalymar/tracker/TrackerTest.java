@@ -78,7 +78,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item1 = new Item("Task1", "Description of task1");
         tracker.add(item1);
-        tracker.addComment(item1.getId(), new Comment("Это комментарий"));
+        tracker.addCommentById(item1.getId(), new Comment("Это комментарий"));
         String expected = "Это комментарий";
         assertThat(item1.getComments().get(0).getComment(), is(expected));
     }

@@ -1,6 +1,8 @@
 package ru.yalymar.model;
 
 
+import ru.yalymar.tracker.Tracker;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,19 +13,24 @@ public class Item {
     private String description;
     private Date time;
     private String id;
-    private List <Comment> comments = new ArrayList<Comment>();
+    private List <Comment> comments;
 
     public Item(String name, String description) {
         this.name = name;
         this.description = description;
+        this.comments = new ArrayList<Comment>();
     }
 
     public Item(String name, String description, String id) {
         this.name = name;
         this.description = description;
         this.id = id;
+        this.comments = new ArrayList<Comment>();
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
 
     public String getDescription() {
         return description;
@@ -41,14 +48,6 @@ public class Item {
         this.id = id;
     }
 
-    public void addCommentInList(Comment comment){
-        this.comments.add(comment);
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
     @Override
     public boolean equals(Object o){
         Item i = (Item) o;
@@ -64,4 +63,10 @@ public class Item {
         result = prime * result + (id == null ? 0 : id.hashCode());
         return result;
     }
+
+    public void addToListComments(Comment comment){
+        comments.add(comment);
+    }
+
+
 }

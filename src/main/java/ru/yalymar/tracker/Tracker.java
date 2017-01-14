@@ -28,8 +28,10 @@ public class Tracker {
      * @param item
      */
     public void update(Item item){
-        if(this.items.indexOf(item) != -1)
-            Collections.replaceAll(this.items, this.items.get(this.items.indexOf(item)), item);
+        int index = this.items.indexOf(item);
+        if(index != -1) {
+            Collections.replaceAll(this.items, this.items.get(index), item);
+        }
     }
 
     /**

@@ -161,11 +161,11 @@ public class Menu {
                 System.out.println("1. Edit name;\n2. Edit Description;\n3. Back.");
                 newin = input.getNumber("Enter the number: ");
                 if (newin == 1) {
-                    Item newItem = new Item(input.ask("Enter new name: "), tracker.findById(id).getDescription());
+                    Item newItem = new Item(input.ask("Enter new name: "), tracker.findById(id).getDescription(), tracker.findById(id).getId());
                     tracker.update(newItem);
                 }
                 if (newin == 2) {
-                    Item newItem = new Item(tracker.findById(id).getDescription(), input.ask("Enter new description: "));
+                    Item newItem = new Item(tracker.findById(id).getName(), input.ask("Enter new description: "), tracker.findById(id).getId());
                     tracker.update(newItem);
                 }
             }

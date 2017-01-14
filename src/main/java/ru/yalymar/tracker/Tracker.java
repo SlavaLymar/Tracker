@@ -2,6 +2,8 @@ package ru.yalymar.tracker;
 
 import ru.yalymar.model.Comment;
 import ru.yalymar.model.Item;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -13,6 +15,7 @@ public class Tracker {
 
     private List <Item> items = new ArrayList<Item>();
     private static final Random RANDOM = new Random();
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
 
     /**
      * @param item
@@ -136,11 +139,11 @@ public class Tracker {
      * show all items
      */
     public void showAllItems(){
-        System.out.printf("%1$-30s%2$-30s%3$-30s\n", "Id", "Name", "Description");
-        System.out.printf("------------------------------------------------------------------------------------------\n");
+        System.out.printf("%1$-30s%2$-30s%3$-30s%4$-20s\n", "Id", "Name", "Description", "Date");
+        System.out.printf("--------------------------------------------------------------------------------------------------------------\n");
         for(Item i: this.items){
             if(i != null) {
-                System.out.printf("%1$-30s%2$-30s%3$-30s\n", i.getId(), i.getName(), i.getDescription());
+                System.out.printf("%1$-30s%2$-30s%3$-30s%4$-20s\n", i.getId(), i.getName(), i.getDescription(), sdf.format(i.getTime()));
             }
         }
     }
@@ -149,11 +152,11 @@ public class Tracker {
      * @param item
      */
     public void showAllItems(List<Item> item){
-        System.out.printf("%1$-30s%2$-30s%3$-30s\n", "Id", "Name", "Description");
-        System.out.printf("------------------------------------------------------------------------------------------\n");
+        System.out.printf("%1$-30s%2$-30s%3$-30s%4$-20s\n", "Id", "Name", "Description", "Date");
+        System.out.printf("--------------------------------------------------------------------------------------------------------------\n");
         for(Item i: item){
             if(i != null) {
-                System.out.printf("%1$-30s%2$-30s%3$-30s\n", i.getId(), i.getName(), i.getDescription());
+                System.out.printf("%1$-30s%2$-30s%3$-30s%4$-20s\n", i.getId(), i.getName(), i.getDescription(), sdf.format(i.getTime()));
             }
         }
     }
@@ -162,10 +165,10 @@ public class Tracker {
      * @param item
      */
     public void showOneItems(Item item){
-        System.out.printf("%1$-30s%2$-30s%3$-30s\n", "Id", "Name", "Description");
-        System.out.printf("------------------------------------------------------------------------------------------\n");
+        System.out.printf("%1$-30s%2$-30s%3$-30s%4$-20s\n", "Id", "Name", "Description");
+        System.out.printf("--------------------------------------------------------------------------------------------------------------\n");
         if(item!=null)
-        System.out.printf("%1$-30s%2$-30s%3$-30s\n", item.getId(), item.getName(), item.getDescription());
+        System.out.printf("%1$-30s%2$-30s%3$-30s%4$-20s\n", item.getId(), item.getName(), item.getDescription(), sdf.format(item.getTime()));
     }
 
     /**
@@ -176,7 +179,7 @@ public class Tracker {
         List<Comment> commentsItem = item.getComments();
         int position = 1;
         for (Comment c: commentsItem){
-            System.out.printf("%1$-3d%2$s\n", position++, c.getComment());
+            System.out.printf("%1$-3d%2$s%4$-20s\n", position++, c.getComment(), sdf.format(item.getTime()));
         }
     }
 

@@ -332,7 +332,7 @@ public class Menu {
 
             do {
                 System.out.println("What you will want to do? Enter the number:\n1. Add comment by name;\n" +
-                        "2. Show comment by name;\n3. Back.");
+                        "2. Show comment by id;\n3. Back.");
                 newin = input.getNumber("Enter the number: ");
                 if (newin == 1) {
                     tracker.showAllItems();

@@ -23,9 +23,9 @@ public class StartUI {
        Tracker tracker = new Tracker();
        Menu menu = new Menu(this.input, tracker);
        menu.fillMenu();
+       menu.greetings();
 
        do{
-           menu.greetings();
            menu.showMenu();
            menu.select(this.input.ask("Select a number of menu: ", menu.getIntArr()));
        }

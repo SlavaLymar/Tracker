@@ -15,7 +15,8 @@ public class Tracker {
 
     private List <Item> items = new ArrayList<Item>();
     private static final Random RANDOM = new Random();
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
+    private int idCounter = 0;
 
     /**
      * @param item
@@ -96,7 +97,7 @@ public class Tracker {
      */
     public String generateId(){
 
-        return String.valueOf(System.currentTimeMillis()+RANDOM.nextInt());
+        return String.valueOf(this.idCounter++);
     }
 
     /**
@@ -165,7 +166,7 @@ public class Tracker {
      * @param item
      */
     public void showOneItems(Item item){
-        System.out.printf("%1$-30s%2$-30s%3$-30s%4$-20s\n", "Id", "Name", "Description");
+        System.out.printf("%1$-30s%2$-30s%3$-30s%4$-20s\n", "Id", "Name", "Description", "Date");
         System.out.printf("--------------------------------------------------------------------------------------------------------------\n");
         if(item!=null)
         System.out.printf("%1$-30s%2$-30s%3$-30s%4$-20s\n", item.getId(), item.getName(), item.getDescription(), sdf.format(item.getTime()));
@@ -179,7 +180,7 @@ public class Tracker {
         List<Comment> commentsItem = item.getComments();
         int position = 1;
         for (Comment c: commentsItem){
-            System.out.printf("%1$-3d%2$s%4$-20s\n", position++, c.getComment(), sdf.format(item.getTime()));
+            System.out.printf("%1$-3d%2$-50s%3$-20s\n", position++, c.getComment(), sdf.format(item.getTime()));
         }
     }
 

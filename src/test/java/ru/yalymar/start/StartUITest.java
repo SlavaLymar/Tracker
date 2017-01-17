@@ -64,7 +64,8 @@ public class StartUITest {
         menu.fillMenu();
         int key = SI.ask("Question", menu.getIntArr());
         menu.select(key);
-        assertNotNull(tracker.getItems().isEmpty());
+        String expected = null;
+        assertThat(tracker.findById(answers[0]), is(expected));
     }
 
     //test for show all

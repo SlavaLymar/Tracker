@@ -88,5 +88,4 @@ public class TrackerTest {
         assertThat(item1.getComments().get(0).getComment(), is(expected));
     }
 
-
 }

@@ -2,12 +2,15 @@ package ru.yalymar.start;
 
 public class StabInput implements Input {
     private String[] answers;
-    private int[] numbers;
     private int position = 0;
+    private int[] numbers;
     private int positionNumber = 0;
+    private int positionOfMenu = 0;
 
-    public StabInput(String[] answers) {
+    public StabInput(String[] answers, int[] numbers, int positionOfMenu) {
         this.answers = answers;
+        this.numbers = numbers;
+        this.positionOfMenu = positionOfMenu;
     }
 
     public String ask(String question) {
@@ -16,7 +19,7 @@ public class StabInput implements Input {
 
     @Override
     public int ask(String question, int[] arr) {
-        return 0;
+        return this.positionOfMenu;
     }
 
     public int getNumber(String question) {

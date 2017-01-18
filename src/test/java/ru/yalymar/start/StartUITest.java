@@ -7,8 +7,6 @@ import ru.yalymar.tracker.Tracker;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertNotNull;
-
 
 /**
  * @author slavalymar

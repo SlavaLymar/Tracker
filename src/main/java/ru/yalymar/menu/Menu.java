@@ -151,25 +151,37 @@ public class Menu {
          * @param tracker
          */
         @Override
-        public void execute(Input input, Tracker tracker) {
+        public void execute(Input input, Tracker tracker){
             tracker.showAllItems();
             String id = input.ask("Enter the id: ");
             tracker.showOneItems(tracker.findById(id));
             int newin = 0;
+            boolean exist = false;
 
-            do {
-                System.out.println("1. Edit name;\n2. Edit Description;\n3. Back.");
-                newin = input.getNumber("Enter the number: ");
-                if (newin == 1) {
-                    Item newItem = new Item(input.ask("Enter new name: "), tracker.findById(id).getDescription(), tracker.findById(id).getId());
-                    tracker.update(newItem);
-                }
-                if (newin == 2) {
-                    Item newItem = new Item(tracker.findById(id).getName(), input.ask("Enter new description: "), tracker.findById(id).getId());
-                    tracker.update(newItem);
-                }
+            try {
+                exist = tracker.findById(id).getId().equals(id);
             }
-            while (newin != 3);
+            catch (NullPointerException e){
+                System.out.println("Item`s not found");
+            }
+                if (exist) {
+                    do {
+                        System.out.println("1. Edit name;\n2. Edit Description;\n3. Back.");
+                        newin = input.getNumber("Enter the number: ");
+                        if (newin == 1) {
+                            Item newItem = new Item(input.ask("Enter new name: "), tracker.findById(id).getDescription(), tracker.findById(id).getId());
+                            tracker.update(newItem);
+                        }
+                        if (newin == 2) {
+                            Item newItem = new Item(tracker.findById(id).getName(), input.ask("Enter new description: "), tracker.findById(id).getId());
+                            tracker.update(newItem);
+                        }
+                    }
+                    while (newin != 3);
+                }
+
+
+
         }
     }
 

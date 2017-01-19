@@ -1,5 +1,8 @@
 package ru.yalymar.start;
 
+import ru.yalymar.exceptions.MenuOutOfException;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -15,7 +18,7 @@ public class ConsoleInput implements Input {
      * @return result
      */
     @Override
-    public String ask(String question) {
+    public String ask(String question){
         System.out.println(question);
         String result = sc.nextLine();
         return result;
@@ -30,13 +33,18 @@ public class ConsoleInput implements Input {
     public int ask(String question, int[] arrLength) {
         int result = 0;
         int number = Integer.parseInt(this.ask(question));
+        boolean exist = false;
         for(int i: arrLength){
             if(i == number-1){
                 result = i;
+                exist = true;
                 break;
             }
         }
-        return result;
+        if(exist)return result;
+        else {
+            throw new MenuOutOfException("Out of range");
+        }
     }
 
     /**
@@ -44,9 +52,15 @@ public class ConsoleInput implements Input {
      * @return result
      */
     @Override
-    public int getNumber(String question) {
+    public int getNumber(String question) throws InputMismatchException {
         System.out.println(question);
-        int result = sc.nextInt();
+        int result = 0;
+        try {
+            result = sc.nextInt();
+        }
+        catch (InputMismatchException e){
+            System.out.println("Incorrect statement!!");
+        }
         sc.nextLine();
         return result;
     }
